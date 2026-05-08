@@ -37,15 +37,15 @@
     -o-transform: scale(1.1);
 }
 #landing .carousel-inner .carousel-item:nth-child(1) .large-banner {
-  background-image: url("/images/imgi_12_hero-Banner-1.2.png");
+  background-image: url("images/imgi_12_hero-Banner-1.2.png");
 }
 
 #landing .carousel-inner .carousel-item:nth-child(2) .large-banner {
-  background-image: url("/images/imgi_14_hero-Banner-1.3_1.png");
+  background-image: url("images/imgi_14_hero-Banner-1.3_1.png");
 }
 
 #landing .carousel-inner .carousel-item:nth-child(3) .large-banner {
-  background-image: url("/images/imgi_10_hero-Banner.png");
+  background-image: url("images/imgi_10_hero-Banner.png");
 }
 
 #landing .large-banner span.yellow-text {
@@ -86,15 +86,15 @@
   }
 
     #landing .carousel-inner .carousel-item:nth-child(1) .large-banner {
-      background-image: url("/images/imgi_12_hero-Banner-1.2.png");
+      background-image: url("images/imgi_12_hero-Banner-1.2.png");
     }
 
     #landing .carousel-inner .carousel-item:nth-child(2) .large-banner {
-      background-image: url("/images/imgi_14_hero-Banner-1.3_1.png");
+      background-image: url("images/imgi_14_hero-Banner-1.3_1.png");
     }
 
     #landing .carousel-inner .carousel-item:nth-child(3) .large-banner {
-      background-image: url("/images/imgi_10_hero-Banner.png");
+      background-image: url("images/imgi_10_hero-Banner.png");
     }
 
   #landing .large-banner a {
@@ -146,14 +146,14 @@
 }
 
 #landing .col-lg-5 .small-banner:nth-child(1) {
-  background-image: url("/images/imgi_16_hero-Banner-2(1).png");
+  background-image: url("images/imgi_16_hero-Banner-2(1).png");
   background-position: center center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #landing .col-lg-5 .small-banner:nth-child(2) {
-  background-image: url("/images/imgi_17_hero-Banner-3(1).jpeg");
+  background-image: url("images/imgi_17_hero-Banner-3(1).jpeg");
   background-position: right center;
   background-size: 90%;
   background-repeat: no-repeat;
