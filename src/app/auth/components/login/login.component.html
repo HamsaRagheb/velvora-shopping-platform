@@ -1,0 +1,123 @@
+<div class="sign-in">
+  <div class="row g-0 h-100">
+    <div class="col-lg-3">
+      <div
+        class="image-part bg-primary h-100 p-5 text-white d-flex flex-column justify-content-between"
+      >
+        <div class="image text-center mx-auto">
+          <img src="images/logo.png" alt="logo-img" />
+        </div>
+        <div class="hero-text text-center text-lg-start my-5">
+          <p class="fs-1">
+            Shop the <br />
+            <span class="sea-text fst-italic">finest</span><br />
+            collection
+          </p>
+          <p>
+            Curated products, seamless<br />
+            experience,<br />
+            delivered to your world.
+          </p>
+        </div>
+        <div class="stats d-flex justify-content-between">
+          <div class="shoppers">
+            <h5>2M<i class="fa-solid fa-plus"></i></h5>
+            <span class="text-uppercase">shoppers</span>
+          </div>
+          <div class="satisfaction">
+            <h5>99<i class="fa-solid fa-percent"></i></h5>
+            <span class="text-uppercase">satisfaction</span>
+          </div>
+          <div class="brands">
+            <h5>150<i class="fa-solid fa-plus"></i></h5>
+            <span class="text-uppercase">brands</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-9">
+      <div class="form-part h-100 pb-3 pt-4 px-5">
+        <div class="title my-3 text-center text-lg-start">
+          <h2 class="text-capitalize">Welcome back</h2>
+          <p>Sign in to your account to continue shopping.</p>
+        </div>
+        <form (ngSubmit)="onSignIn()" #signInForm="ngForm">
+          <div class="email mb-3">
+            <label for="email" class="form-label text-uppercase"
+              >Email address</label
+            >
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="signInUser.email"
+              #signInEmail="ngModel"
+              required
+              pattern="^[a-zA-Z0-9]+([._%+\-][a-zA-Z0-9]+)*@(gmail|yahoo)\.(com)$"
+              class="form-control"
+              id="email"
+              placeholder="Enter Your Email"
+            />
+            @if (signInEmail.touched && signInEmail.invalid) {
+              <div class="text-danger mt-2">
+                @if (signInEmail.errors?.["required"]) {
+                  <p>Email Address is required</p>
+                }
+                @if (signInEmail.errors?.["pattern"]) {
+                  <p>Please enter a valid email address</p>
+                }
+              </div>
+            }
+          </div>
+          <div class="password mb-3">
+            <label for="pass" class="form-label text-uppercase">Password</label>
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="signInUser.password"
+              #signInPassword="ngModel"
+              class="form-control"
+              required
+              id="pass"
+              placeholder="Enter Your Password"
+            />
+            @if (signInPassword.touched && signInPassword.invalid) {
+              <div class="text-danger mt-2">
+                @if (signInPassword.errors?.["required"]) {
+                  <p>Email Address is required</p>
+                }
+                @if (signInPassword.errors?.["pattern"]) {
+                  <p>Please enter a valid email address</p>
+                }
+              </div>
+            }
+          </div>
+
+          <div class="text-end mb-3">
+            <a
+              routerLink="/auth/forget-password"
+              class="forgot-link text-decoration-underline"
+              >Forgot password?</a
+            >
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="signInForm.invalid"
+            class="btn btn-gradient w-100"
+          >
+            Sign in to your account
+          </button>
+
+          <div class="signup-prompt text-center mt-3">
+            <span>Don't have an account?</span>
+            <a
+              routerLink="/signup"
+              class="signup-link ms-1 text-decoration-underline"
+              >Sign up</a
+            >
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

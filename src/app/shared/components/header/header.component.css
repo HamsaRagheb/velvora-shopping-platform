@@ -1,0 +1,480 @@
+/* ============================================================
+   SEARCH OVERLAY & DROPDOWN
+   ============================================================ */
+.search-backdrop {
+  position: fixed;
+  top: 130px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 130px);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.search-area {
+  z-index: 1002;
+}
+
+.search-dropdown {
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 1001;
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+}
+
+.search-item {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.search-item:last-child {
+  border-bottom: none;
+}
+
+.search-item img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.search-item .product-info p {
+  color: var(--dark-blue);
+}
+
+.search-item .product-info span.price {
+  color: var(--light-blue);
+}
+
+.search-item:hover {
+  background-color: #e0e9f4;
+}
+
+.search-item p {
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+/* ============================================================
+   HEADER — BASE
+   ============================================================ */
+header {
+  position: relative;
+  z-index: 1039;
+}
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+header .top-bar {
+  background-color: var(--primary-dark);
+  color: white;
+  min-height: 44px;
+  overflow: visible;
+  padding: 6px 0;
+  position: relative;
+  z-index: 2000;
+}
+
+header .top-bar .top-bar-text {
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+header .top-bar .language-dropdown .dropdown-menu,
+header .top-bar .country-dropdown .dropdown-menu {
+  position: absolute;
+  z-index: 9999 !important;
+  padding: 8px;
+  min-width: 150px;
+}
+
+header .top-bar .language-dropdown .dropdown-menu li,
+header .top-bar .country-dropdown .dropdown-menu li {
+  cursor: pointer;
+}
+
+.dropdown-item {
+  padding: 10px 12px;
+  font-size: 17px;
+  border-radius: 6px;
+}
+
+.dropdown-item:hover {
+  background-color: var(--primary-light);
+  color: black;
+}
+
+header .top-bar .btn {
+  font-size: 17px;
+  padding: 4px 8px;
+}
+
+/* ============================================================
+   MAIN BAR
+   ============================================================ */
+header .main-bar,
+nav {
+  background-color: white;
+}
+
+header .main-bar {
+  border-bottom: 1px solid #eee;
+}
+
+.main-bar-inner {
+  min-height: 70px;
+}
+
+/* Logo */
+header .main-bar .logo-img {
+  width: 100px;
+  height: auto;
+  max-height: 80px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Search area */
+header .main-bar .search-area {
+  border: 1.5px solid #d1d9e6;
+  height: 48px;
+  border-radius: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+header .main-bar .search-area:focus-within {
+  border-color: var(--primary-dark);
+  box-shadow: 0 0 0 3px rgba(15, 40, 84, 0.08);
+}
+
+.form-control:focus,
+.form-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Search button */
+header .main-bar .search-area .search-btn,
+.mobile-search-bar .search-area .search-btn {
+  background-color: var(--primary-dark);
+  color: white;
+  border-radius: 10px;
+  padding: 0 18px;
+  height: 38px;
+  margin: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+header .main-bar .search-area .search-btn:hover,
+.mobile-search-bar .search-area .search-btn:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Header Icons */
+header .main-bar .header-icon .icon i {
+  font-size: 25px;
+  color: var(--primary-dark);
+}
+
+header .main-bar .header-icon .text-label {
+  font-size: 17px;
+  color: gray;
+  line-height: 1.2;
+}
+
+header .main-bar .header-icon .cart-total {
+  font-size: 15px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+header .main-bar .header-icon span.counter {
+  padding: 3px;
+  font-size: 14px;
+  color: white;
+  background-color: #CB112D;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -8px;
+  right: -8px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+header .main-bar .header-icon a {
+  color: var(--primary-dark);
+  transition: opacity 0.15s ease;
+}
+
+header .main-bar .header-icon a:hover {
+  opacity: 0.75;
+}
+
+/* Mobile search toggle */
+.mobile-search-toggle i {
+  font-size: 23px;
+  color: var(--primary-dark);
+}
+
+/* ============================================================
+   MOBILE SEARCH BAR (collapsible)
+   ============================================================ */
+.mobile-search-bar {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.mobile-search-bar.open {
+  max-height: 100px;
+}
+
+.mobile-search-bar .search-area {
+  border: 1.5px solid #d1d9e6;
+  height: 46px;
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.mobile-search-bar .search-area:focus-within {
+  border-color: var(--primary-dark);
+}
+
+/* ============================================================
+   NAV BAR
+   ============================================================ */
+nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  height: 52px;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+}
+
+nav .categories {
+  font-size: 17px;
+  color: var(--primary-dark);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+nav .categories:hover {
+  color: var(--dark-blue);
+}
+
+nav .categories i {
+  color: var(--primary-dark);
+}
+
+nav ul li {
+  font-size: 17px;
+  color: var(--primary-dark);
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #666;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+nav ul li a:hover {
+  color: var(--primary-dark);
+}
+
+nav ul li a.active {
+  color: var(--primary-dark);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-dark);
+  padding-bottom: 3px;
+}
+
+.promo-text {
+  font-size: 16px;
+  color: var(--primary-dark);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* ---- Large tablets / small laptops (lg: 992px) ---- */
+@media (max-width: 1199px) {
+  header .main-bar .logo-img {
+    width: 70px;
+  }
+
+  header .main-bar .header-icon .icon i {
+    font-size: 20px;
+  }
+}
+
+/* ---- Tablets (md: 768px – 991px) ---- */
+@media (max-width: 991px) {
+  header .top-bar {
+    min-height: 40px;
+  }
+
+  .main-bar-inner {
+    min-height: 64px;
+  }
+
+  header .main-bar .logo-img {
+    width: 65px;
+  }
+  header .top-bar .top-bar-text,
+  header .top-bar .btn {
+    font-size: 13px;
+  }
+  header .main-bar .search-area .search-btn i{
+    padding-right: 20px;
+  }
+}
+/* ---- Small tablets / large phones (sm: 576px – 767px) ---- */
+@media (max-width: 767px) {
+  header .top-bar .top-bar-text {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+  }
+
+  header .main-bar .logo-img {
+    width: 58px;
+  }
+
+  .main-bar-inner {
+    min-height: 58px;
+  }
+
+  header .main-bar .header-icon .icon i {
+    font-size: 20px;
+  }
+
+  header .main-bar .header-icon span.counter {
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    top: -7px;
+    right: -7px;
+  }
+
+  nav {
+    height: 48px;
+  }
+
+  nav .categories {
+    font-size: 13px;
+  }
+
+  nav ul li a {
+    font-size: 13px;
+  }
+}
+
+/* ---- Mobile phones (xs: < 576px) ---- */
+@media (max-width: 575px) {
+  header .top-bar {
+    min-height: 38px;
+    padding: 4px 0;
+  }
+
+  header .top-bar .btn {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  header .main-bar .logo-img {
+    width: 52px;
+  }
+
+  .main-bar-inner {
+    min-height: 54px;
+  }
+
+  header .main-bar .header-icon {
+    gap: 12px !important;
+  }
+
+  header .main-bar .header-icon .icon i {
+    font-size: 19px;
+  }
+
+  header .main-bar .header-icon span.counter {
+    width: 16px;
+    height: 16px;
+    font-size: 9px;
+    top: -6px;
+    right: -6px;
+  }
+
+  nav {
+    height: 46px;
+  }
+
+  nav .categories {
+    font-size: 12px;
+  }
+
+  nav ul {
+    gap: 10px !important;
+  }
+
+  nav ul li a {
+    font-size: 12px;
+  }
+
+  .search-item p {
+    max-width: 160px;
+    font-size: 0.8rem;
+  }
+
+  .search-item img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ---- Very small phones (< 375px) ---- */
+@media (max-width: 374px) {
+  header .main-bar .logo-img {
+    width: 46px;
+  }
+
+  header .main-bar .header-icon {
+    gap: 8px !important;
+  }
+
+  nav ul {
+    gap: 8px !important;
+  }
+
+  nav ul li a {
+    font-size: 11px;
+  }
+
+  nav .categories {
+    font-size: 11px;
+  }
+}

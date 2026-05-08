@@ -1,0 +1,189 @@
+<div class="sign-up">
+  <div class="row g-0 h-100">
+    <div class="col-lg-3">
+      <div
+        class="image-part bg-primary h-100 p-5 text-white d-flex flex-column justify-content-between"
+      >
+        <div class="image text-center mx-auto">
+          <img src="images/logo.png" alt="logo-img" />
+        </div>
+        <div class="hero-text text-center text-lg-start my-5">
+          <p class="fs-1">
+            Shop the <br />
+            <span class="sea-text fst-italic">finest</span><br />
+            collection
+          </p>
+          <p>
+            Curated products, seamless<br />
+            experience,<br />
+            delivered to your world.
+          </p>
+        </div>
+        <div class="stats d-flex justify-content-between">
+          <div class="shoppers">
+            <h5>2M<i class="fa-solid fa-plus"></i></h5>
+            <span class="text-uppercase">shoppers</span>
+          </div>
+          <div class="satisfaction">
+            <h5>99<i class="fa-solid fa-percent"></i></h5>
+            <span class="text-uppercase">satisfaction</span>
+          </div>
+          <div class="brands">
+            <h5>150<i class="fa-solid fa-plus"></i></h5>
+            <span class="text-uppercase">brands</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="form-part h-100 pb-3 pt-4 px-5">
+        <div class="title my-3 text-center text-lg-start">
+          <h2 class="text-capitalize">Create account</h2>
+          <p>Join millions of happy shoppers today.</p>
+        </div>
+
+        <form (ngSubmit)="onSignUp()" #signUpForm="ngForm">
+          <!-- NAME -->
+          <div class="name mb-3">
+            <label class="form-label text-uppercase">Name</label>
+            <input
+              type="text"
+              name="name"
+              [(ngModel)]="signUpUser.name"
+              #userName="ngModel"
+              required
+              pattern="^[A-Za-z]{3,} [A-Za-z]{3,}$"
+              class="form-control"
+              placeholder="e.g. Ahmed Ali"
+            />
+
+            @if (userName.invalid && userName.touched) {
+              <div class="text-danger mt-2">
+                @if (userName.errors?.["required"]) {
+                  <p>Name is required</p>
+                }
+                @if (userName.errors?.["pattern"]) {
+                  <p>
+                    Please enter a valid name (two words, each at least 3
+                    letters)
+                  </p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- EMAIL -->
+          <div class="email mb-3">
+            <label class="form-label text-uppercase">Email address</label>
+            <input
+              type="email"
+              name="email"
+              [(ngModel)]="signUpUser.email"
+              #userEmail="ngModel"
+              required
+              pattern="^[a-zA-Z0-9]+([._%+\-][a-zA-Z0-9]+)*@(gmail|yahoo)\.(com)$"
+              class="form-control"
+              placeholder="name@example.com"
+            />
+
+            @if (userEmail.invalid && userEmail.touched) {
+              <div class="text-danger mt-2">
+                @if (userEmail.errors?.["required"]) {
+                  <p>Email Address is required</p>
+                }
+                @if (userEmail.errors?.["pattern"]) {
+                  <p>Please enter a valid email address</p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- PASSWORD -->
+          <div class="password mb-3">
+            <label class="form-label text-uppercase">Password</label>
+            <input
+              type="password"
+              name="password"
+              [(ngModel)]="signUpUser.password"
+              #userPassword="ngModel"
+              required
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&_\-#])[A-Za-z\d@$!%*?&_\-#]{8,}$"
+              class="form-control"
+              placeholder="Min. 8 characters"
+            />
+            @if (userPassword.invalid && userPassword.touched) {
+              <div class="text-danger mt-2">
+                @if (userPassword.errors?.["required"]) {
+                  <p>Password is required</p>
+                }
+                @if (userPassword.errors?.["pattern"]) {
+                  <p>
+                    Password must be at least 8 characters and include
+                    uppercase, lowercase, number, and special character
+                  </p>
+                }
+              </div>
+            }
+          </div>
+
+          <!-- CONFIRM PASSWORD -->
+          <div class="re-password mb-3">
+            <label class="form-label text-uppercase">Confirm Password</label>
+            <input
+              type="password"
+              name="rePassword"
+              [(ngModel)]="signUpUser.rePassword"
+              #userRePassword="ngModel"
+              required
+              class="form-control"
+              placeholder="Re-enter your password"
+            />
+
+            @if (
+              userRePassword.touched &&
+              signUpUser.password !== signUpUser.rePassword
+            ) {
+              <div class="text-danger mt-2">
+                <p>Passwords do not match</p>
+              </div>
+            }
+          </div>
+
+          <!-- PHONE -->
+          <div class="phone mb-3">
+            <label class="form-label text-uppercase">Phone</label>
+            <input
+              type="text"
+              name="phone"
+              [(ngModel)]="signUpUser.phone"
+              #userPhone="ngModel"
+              pattern="^(\+20|0020|0)?1[0125]\d{8}$"
+              class="form-control"
+              placeholder="e.g. 01012345678"
+            />
+
+            @if (userPhone.invalid && userPhone.touched) {
+              <div class="text-danger mt-2">
+                @if (userPhone.errors?.["required"]) {
+                  <p>Phone is required</p>
+                }
+                @if (userPhone.errors?.["pattern"]) {
+                  <p>Enter a valid Egyptian phone number</p>
+                }
+              </div>
+            }
+          </div>
+
+          <button
+            type="submit"
+            [disabled]="signUpForm.invalid"
+            class="btn btn-gradient"
+          >
+            Create my account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

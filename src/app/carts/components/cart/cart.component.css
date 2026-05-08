@@ -1,0 +1,99 @@
+/* ===== GENERAL ===== */
+.cart {
+  padding: 20px 10px;
+}
+
+.cart .items,
+.cart .summary {
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== IMAGE ===== */
+.image {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* ===== TEXT ===== */
+.item-title {
+  font-size: 14px;
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0;
+}
+
+.item-price {
+  font-size: 13px;
+  color: gray;
+}
+
+/* ===== QUANTITY ===== */
+.quantity {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 10px;
+}
+
+.quantity button {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+}
+
+/* ===== DELETE ===== */
+.delete-btn {
+  border: none;
+  background: #dc3545;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* ===== MOBILE CARD ===== */
+.mobile-cart-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+/* ===== BUTTONS ===== */
+button.btn {
+  background: #0F2854;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+}
+button.btn:hover {
+  background: var(--dark-blue);
+}
+/* ===== SUMMARY ===== */
+.summary {
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+  .image {
+    width: 65px;
+    height: 65px;
+  }
+
+  .quantity {
+    width: 100px;
+    justify-content: space-between;
+  }
+
+  .item-title {
+    font-size: 13px;
+  }
+}

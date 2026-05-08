@@ -1,0 +1,10 @@
+<select
+  (change)="onSelectChange($event)"
+  aria-label="Select Category"
+  class="form-select border-0 w-auto p-2 m-3"
+>
+  <option value="all">All Categories</option>
+  <option *ngFor="let category of categories" [value]="category">
+    {{ category }}
+  </option>
+</select>

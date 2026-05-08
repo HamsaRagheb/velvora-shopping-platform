@@ -1,0 +1,32 @@
+<div
+  *ngIf="isVisable"
+  [class.hide-overlay]="isClosing"
+  (click)="close()"
+  class="welcome-overlay d-flex justify-content-center align-items-center"
+>
+  <div class="welcome-model position-relative">
+    <button
+      type="button"
+      (click)="close()"
+      class="close-btn position-absolute bg-transparent border-0"
+      aria-label="Close"
+    >
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="image position-relative w-100 h-100">
+      <img class="img-fluid" src="/images/advertisement.png" alt="adv-img" />
+      <div
+        class="welcome-text position-absolute top-0 start-0 d-flex flex-column justify-content-center align-items-center"
+      >
+        <p class="welcome-label">YOU'RE IN!</p>
+        <h2 class="welcome-heading">Welcome</h2>
+        <p class="welcome-sub">
+          Explore the finest collection,<br />curated just for you.
+        </p>
+        <button class="shop-btn" (click)="goToProducts()">
+          Start Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

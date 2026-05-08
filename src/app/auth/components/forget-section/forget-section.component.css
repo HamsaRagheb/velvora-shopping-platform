@@ -1,0 +1,48 @@
+.forget-password{
+  background-color: #E9EDF3;
+}
+.content {
+  max-width: 600px !important;
+  max-height: 90vh;
+  
+}
+.logo-wrapper {
+  max-width: 100px;
+  max-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.alert{
+  background-color: var(--primary-light);
+  border: 2px solid var(--dark-blue);
+}
+form{
+  height: 400px;
+}
+.content form p {
+  font-size: 14px !important;
+  color: red;
+  font-family: "Inter", serif !important;
+}
+.save-btn {
+  background: #0F2854;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: none;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+/* Hover effect */
+.save-btn:hover {
+  background: #1C4D8D;
+  color: white;
+}

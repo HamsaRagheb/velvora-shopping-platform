@@ -1,0 +1,8 @@
+.page-banner{
+  background-color: #E9EDF3;
+}
+.page-title{
+  font-size: 50px;
+  font-family: "Playfair Display", serif;
+  color: var(--primary-dark);
+}

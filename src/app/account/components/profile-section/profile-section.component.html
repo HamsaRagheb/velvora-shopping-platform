@@ -1,0 +1,46 @@
+<div class="content h-100 d-flex flex-column justify-content-evenly">
+  <div class="info">
+    <div class="title text-center mb-5 mt-0 pt-0">
+      <h3 class="mb-1">Personal info</h3>
+      <p class="text-muted small mb-4">Manage your account details</p>
+    </div>
+
+    <!-- Profile Card -->
+    <div
+      class="profile-card d-flex justify-content-between align-items-center mb-4"
+    >
+      <div class="d-flex align-items-center gap-3">
+        <div class="avatar">{{ initials }}</div>
+        <div>
+          <h5 class="mb-0">{{ loggedUser?.name }}</h5>
+          <small class="text-muted">Role: {{ loggedUser?.role }}</small>
+        </div>
+      </div>
+      <span class="badge-status"><span class="active-mark"></span>Active</span>
+    </div>
+  </div>
+  <!-- Form -->
+  <form>
+    <div class="mb-3">
+      <label class="form-label">FULL NAME</label>
+      <input
+        aria-label="name"
+        type="text"
+        class="form-control"
+        [value]="loggedUser?.name"
+        readonly
+      />
+    </div>
+
+    <div class="mb-4">
+      <label class="form-label">EMAIL ADDRESS</label>
+      <input
+        type="email"
+        class="form-control"
+        [value]="loggedUser?.email"
+        aria-label="email"
+        readonly
+      />
+    </div>
+  </form>
+</div>

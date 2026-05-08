@@ -1,0 +1,128 @@
+<app-welcome-model></app-welcome-model>
+<div class="container">
+  <!-- Start Landing -->
+  <section id="landing" class="my-5">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-lg-7">
+          <!-- Carousel in Bootstrap-->
+          <div
+            id="carouselExampleIndicators"
+            class="carousel slide h-100"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-indicators">
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="0"
+                class="active"
+                aria-current="true"
+                aria-label="Slide 1"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="1"
+                aria-label="Slide 2"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#carouselExampleIndicators"
+                data-bs-slide-to="2"
+                aria-label="Slide 3"
+              ></button>
+            </div>
+            <div class="carousel-inner h-100">
+              <div class="carousel-item active h-100">
+                <div
+                  class="large-banner text-white p-5 h-100 d-flex flex-column justify-content-center"
+                >
+                  <h5 class="text-uppercase mt-4">
+                    <span class="yellow-text">new arrivals</span>
+                  </h5>
+                  <h2 class="text-uppercase">
+                    <span class="yellow-text">4k </span>lcd <br />quantum vision
+                    lcd
+                  </h2>
+                  <p class="text-capitalize mt-3">limited time: online only!</p>
+                  <a
+                    routerLink="/products"
+                    class="basic-button py-2 px-4 text-capitalize"
+                    >shop now</a
+                  >
+                </div>
+              </div>
+              <div class="carousel-item h-100">
+                <div
+                  class="large-banner text-white p-5 h-100 d-flex flex-column justify-content-center"
+                >
+                  <h5 class="text-uppercase mt-4">
+                    <span class="yellow-text">new arrivals</span>
+                  </h5>
+                  <h2 class="text-uppercase">
+                    <span class="yellow-text">4k </span>lcd <br />quantum vision
+                    lcd
+                  </h2>
+                  <p class="text-capitalize mt-3">limited time: online only!</p>
+                  <a
+                    routerLink="/products"
+                    class="basic-button py-2 px-4 text-capitalize"
+                    >shop now</a
+                  >
+                </div>
+              </div>
+              <div class="carousel-item h-100">
+                <div
+                  class="large-banner text-white p-5 h-100 d-flex flex-column justify-content-center"
+                >
+                  <h5 class="text-uppercase mt-4">
+                    <span class="yellow-text">new arrivals</span>
+                  </h5>
+                  <h2 class="text-uppercase">
+                    <span class="yellow-text">4k </span>lcd <br />quantum vision
+                    lcd
+                  </h2>
+                  <p class="text-capitalize mt-3">limited time: online only!</p>
+                  <a href="" class="py-2 px-4 text-capitalize">shop now</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 d-flex flex-column gap-3">
+          <div class="small-banner text-white text-capitalize">
+            <h5 class="mt-2">
+              Modern Comfort<br />
+              Refined Style
+            </h5>
+            <p class="mt-3">Designed to elevate your everyday wardrobe.</p>
+          </div>
+          <div class="small-banner text-white text-capitalize">
+            <h5 class="mt-2">ELEGANCE<br />IN EVERY DETAIL</h5>
+            <p class="mt-3">Timeless style. Modern you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Landing -->
+
+  <!-- Start All Products -->
+  <div class="box p-3 m-3">
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" *ngFor="let product of products">
+        <div class="product">
+          <app-product
+            [product]="product"
+            (addToCartEvent)="onAddToCart($event)"
+          >
+          </app-product>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End All Products -->
+</div>
+
+<app-welcome-model [isVisable]="showWelcomeModel"></app-welcome-model>

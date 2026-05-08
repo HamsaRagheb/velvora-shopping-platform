@@ -1,0 +1,81 @@
+<div class="mini-cart" [class.open]="isOpen">
+  <div class="title d-flex justify-content-between align-items-center">
+    <h6 class="ps-4 py-3 mb-0">Shopping Cart</h6>
+    <button
+      type="button"
+      class="btn-close btn-close-white pe-5 text-white"
+      aria-label="Close"
+      (click)="closeMiniCart()"
+    ></button>
+  </div>
+  <div class="cartItems">
+    <div
+      class="cartItem d-flex align-items-center justify-content-between p-4"
+      *ngFor="let item of cartItems"
+    >
+      <div class="item d-flex align-items-center gap-3">
+        <div class="image text-center">
+          <img class="img-fluid" [src]="item.image" alt="item-img" />
+        </div>
+        <div class="details">
+          <p class="name mb-2">{{ item.title }}</p>
+          <p class="price mb-2">
+            {{ item.price | currency: "USD" : "symbol" }}
+          </p>
+          <div
+            class="quantity mb-2 d-flex align-items-center justify-content-center gap-3"
+          >
+            <button
+              type="button"
+              class="decrease border-0 bg-transparent"
+              (click)="decreaseItemQuantity(item.id)"
+              aria-label="decrese button"
+            >
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span>{{ item.quantity }}</span>
+            <button
+              type="button"
+              class="increase border-0 bg-transparent"
+              (click)="increaseItemQuantity(item.id)"
+              aria-label="increse button"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="deleteIcon">
+        <button
+          aria-label="deleteIcon"
+          type="button"
+          class="border-0 bg-transparent"
+          (click)="deleteCartItem(item.id)"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="cart-summary p-3">
+    <div
+      class="total-price d-flex align-items-center justify-content-between mt-2"
+    >
+      <p class="text-uppercase">subtotal:</p>
+      <p class="price">{{ itemstotalPrice() | currency: "USD" : "symbol" }}</p>
+    </div>
+    <a (click)="goToCart()" class="d-block mb-2 view-cart"
+      ><button
+        type="button"
+        class="btn btn-dark view-cart text-uppercase w-100 d-block"
+      >
+        View cart
+      </button>
+    </a>
+    <a class="d-block mb-2 check-out"
+      ><button type="button" class="btn btn-dark text-uppercase w-100">
+        check out
+      </button>
+    </a>
+  </div>
+</div>

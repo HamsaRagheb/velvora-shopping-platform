@@ -1,0 +1,60 @@
+<div
+  class="mini-wishlist d-flex flex-column position-fixed top-0 end-0 bg-white"
+  [class.open]="isOpen"
+>
+  <!-- Header -->
+  <div class="title d-flex justify-content-between align-items-center">
+    <h6 class="ps-4 py-3 m-0">My Wishlist</h6>
+
+    <button
+      type="button"
+      class="btn-close btn-close-white me-3"
+      aria-label="Close"
+      (click)="close()"
+    ></button>
+  </div>
+
+  <!-- Items -->
+  <div class="items p-4 overflow-y-auto flex-grow-1">
+    <div
+      *ngFor="let item of wishlist"
+      class="item d-flex justify-content-between align-items-center py-3 border-bottom"
+    >
+      <div class="d-flex align-items-center gap-3">
+        <div class="image text-center flex-shrink-0">
+          <img class="img-fluid" [src]="item.image" alt="item-img" />
+        </div>
+
+        <div class="details">
+          <p class="name mb-2">{{ item.title }}</p>
+          <p class="price mb-0">
+            {{ item.price | currency: "USD" : "symbol" }}
+          </p>
+        </div>
+      </div>
+
+      <div class="deleteIcon bg-danger rounded py-1">
+        <button
+          aria-label="delete"
+          type="button"
+          class="border-0 bg-transparent"
+          (click)="removeFromWishlist(item.id)"
+        >
+          <i class="fa-solid fa-trash text-white"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="navigate-to-wishlist p-3">
+    <a class="d-block mb-2 wishlist-btn"
+      ><button
+        routerLink="/wishlist"
+        (click)="close()"
+        type="button"
+        class="btn btn-dark text-capitalize w-100"
+      >
+        view wishlist
+      </button>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+.welcome-overlay{
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2100;
+  overflow-y: hidden;
+  cursor: url('/images/xmark-solid.png') 13 13,    auto;
+  animation: fadeIn 0.5s ease;
+  transition: opacity 0.5s ease;
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  -webkit-animation: fadeIn 0.5s ease;
+}
+.welcome-model{
+  animation: slideUp 0.5s ease;
+  max-width: 700px;
+  max-height: 700px;
+  transition: opacity 0.5s ease, transform 0.8s ease,;
+  -webkit-transition: opacity 0.5s ease, transform 0.8s ease,;
+  -moz-transition: opacity 0.5s ease, transform 0.8s ease,;
+  -ms-transition: opacity 0.5s ease, transform 0.8s ease,;
+  -o-transition: opacity 0.5s ease, transform 0.8s ease,;
+  -webkit-animation: slideUp 0.5s ease;
+}
+.hide-overlay {
+  opacity: 0;
+}
+
+.hide-overlay .welcome-model {
+  transform: translateY(-40px) scale(0.9);
+  opacity: 0;
+}
+.image{
+  cursor: auto;
+}
+.image img{
+  object-fit: contain;
+}
+.close-btn {
+  top: -50px !important;
+  right: -25px !important;
+  background-color: var(--primary-dark) !important;
+  color: white !important;
+  border-radius: 50%;
+  width: 43px;
+  height: 43px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.close-btn i {
+  transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -ms-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+}
+.close-btn:hover i {
+  color: var(--light-blue);
+  transform: rotate(-180deg);
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+}
+.welcome-text{
+  width: 500px;
+  height: 300px;
+}
+.welcome-label {
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity: 0.7;
+  font-size: 20px;
+  margin-bottom: 0.25rem;
+}
+
+.welcome-heading {
+  color: var(--primary-dark);
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.welcome-sub {
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.shop-btn {
+  background-color: var(--primary-dark);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.shop-btn:hover {
+  opacity: 0.85;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (max-width: 768px) {
+
+  .welcome-model {
+    max-width: 90%;
+  }
+
+  .welcome-text {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .welcome-heading {
+    font-size: 1.5rem;
+  }
+
+  .welcome-sub {
+    font-size: 14px;
+  }
+
+  .shop-btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 14px;
+  }
+
+  .close-btn {
+    top: -40px !important;
+    right: 0 !important;
+    width: 36px;
+    height: 36px;
+  }
+}

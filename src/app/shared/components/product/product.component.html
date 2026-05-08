@@ -1,0 +1,37 @@
+<div class="card shadow-lg border-0">
+  <div class="image p-3">
+    <button
+      aria-label="wishlist-button"
+      class="wishlist-button position-absolute border-0 bg-white shadow-lg rounded-2 p-2 d-flex justify-content-center align-items-center"
+      [ngClass]="{
+        'bg-danger text-white': isWishlist(product.id),
+        'bg-white text-dark': !isWishlist(product.id),
+      }"
+      (click)="toggleWishlist(product)"
+    >
+      <i class="fa-regular fa-heart fs-5"></i>
+    </button>
+    <img [src]="product.image" class="card-img-top" alt="product-img" />
+  </div>
+  <div
+    class="card-body position-relative"
+    [routerLink]="['/details', product.id]"
+  >
+    <h5 class="card-title">{{ product.title }}</h5>
+    <p class="card-text text-black-50 description">
+      {{ product.description }}
+    </p>
+    <div class="review d-flex gap-2 align-items-center flex-wrap">
+      <ul class="d-flex p-0 mb-0">
+        <li *ngFor="let star of stars(product.rating.rate)">
+          <i class="fa-solid {{ star }}"></i>
+        </li>
+      </ul>
+      <span class="review-count">({{ product.rating.count }} review)</span>
+    </div>
+    <div class="price mt-2">{{ product.price | currency: "USD" }}</div>
+  </div>
+  <div class="mx-3 mt-0 mb-3">
+    <a class="btn add-to-cart d-block" (click)="addToCart()">Add to cart</a>
+  </div>
+</div>

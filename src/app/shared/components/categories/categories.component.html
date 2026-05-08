@@ -1,0 +1,41 @@
+<!-- Overlay -->
+<div class="overlay" [class.show]="isOpen" (click)="close()"></div>
+
+<!-- Sidebar Panel -->
+<div class="categories-sidebar" [class.open]="isOpen">
+  <div
+    class="sidebar-header d-flex justify-content-between align-items-center px-3 py-3"
+  >
+    <h6 class="m-0 fw-bold text-white">Categories</h6>
+    <button
+      aria-label="b"
+      class="btn-close btn-close-white"
+      (click)="close()"
+    ></button>
+  </div>
+
+  <ul class="category-list list-unstyled m-0 p-2">
+    <!-- All Categories option -->
+    <li>
+      <button
+        class="category-item w-100 text-start px-3 py-2 fs-5"
+        (click)="selectAll()"
+      >
+        All Categories
+      </button>
+    </li>
+
+    <hr class="my-1 border-secondary" />
+
+    <!-- Dynamic category list -->
+    <li *ngFor="let category of categories">
+      <button
+        class="category-item w-100 text-start px-3 py-2 text-capitalize"
+        (click)="selectCategory(category)"
+      >
+        <i class="fa-solid fa-chevron-right me-2 icon-arrow"></i>
+        {{ category }}
+      </button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,145 @@
+<app-page-banner title="Your Cart"></app-page-banner>
+<div class="container">
+  <div class="cart py-4">
+    <div class="row g-4">
+      <!-- CART ITEMS -->
+      <div class="col-12 col-lg-9">
+        <div class="items bg-white p-3">
+          <!-- Desktop Table -->
+          <div class="d-none d-md-block">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Subtotal</th>
+                  <th class="text-center">Remove</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let item of cartItems" class="p-3 align-middle">
+                  <td>
+                    <div class="item-info d-flex align-items-center ju gap-3">
+                      <div class="image d-flex align-items-center">
+                        <img [src]="item.image" alt="item-img" />
+                      </div>
+                      <div class="item-details">
+                        <h5>{{ item.title }}</h5>
+                        <p>{{ item.price | currency: "USD" : "symbol" }}</p>
+                      </div>
+                    </div>
+                  </td>
+
+                  <td class="text-center">
+                    <div
+                      class="quantity d-flex align-items-center justify-content-center gap-3 mx-auto"
+                    >
+                      <button (click)="decrease(item.id)">-</button>
+                      <span>{{ item.quantity }}</span>
+                      <button (click)="increase(item.id)">+</button>
+                    </div>
+                  </td>
+
+                  <td class="text-center">
+                    {{ item.price | currency: "USD" : "symbol" }}
+                  </td>
+
+                  <td class="text-center">
+                    <button
+                      aria-label="delete"
+                      class="delete-btn"
+                      (click)="removeItem(item.id)"
+                    >
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- MOBILE -->
+          <div class="d-block d-md-none">
+            <div *ngFor="let item of cartItems" class="mobile-cart-item">
+              <div class="d-flex gap-3">
+                <div class="image">
+                  <img [src]="item.image" alt="item-img" />
+                </div>
+
+                <div class="flex-grow-1">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-1"
+                  >
+                    <h6 class="item-title m-0">{{ item.title }}</h6>
+
+                    <button
+                      aria-label="Delete item"
+                      class="delete-btn"
+                      (click)="removeItem(item.id)"
+                    >
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </div>
+
+                  <p class="item-price">
+                    {{ item.price | currency: "USD" : "symbol" }}
+                  </p>
+
+                  <div
+                    class="d-flex justify-content-between align-items-center flex-wrap gap-2"
+                  >
+                    <!-- Quantity -->
+                    <div
+                      class="quantity d-flex align-items-center justify-content-center gap-3"
+                    >
+                      <button (click)="decrease(item.id)">-</button>
+                      <span>{{ item.quantity }}</span>
+                      <button (click)="increase(item.id)">+</button>
+                    </div>
+
+                    <!-- Price -->
+                    <span class="fw-bold">
+                      {{ item.price | currency: "USD" : "symbol" }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="actions mt-3 d-flex flex-column gap-2">
+              <button class="btn w-100" (click)="toProducts()">
+                Continue Shopping
+              </button>
+              <button class="btn w-100" (click)="clearCartItems()">
+                Delete All
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUMMARY -->
+      <div class="col-12 col-lg-3">
+        <div class="summary bg-white p-3">
+          <h5>Cart Total</h5>
+
+          <div class="d-flex justify-content-between">
+            <span>Subtotal</span>
+            <span>{{ totalPrice | currency: "USD" : "symbol" }}</span>
+          </div>
+
+          <hr />
+
+          <div class="d-flex justify-content-between">
+            <strong>Total</strong>
+            <strong>{{ totalPrice | currency: "USD" : "symbol" }}</strong>
+          </div>
+
+          <button class="btn w-100 mt-3">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

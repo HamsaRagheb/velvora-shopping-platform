@@ -1,0 +1,106 @@
+<div class="product-details p-2">
+  <div class="row g-3 align-items-stretch" *ngIf="product">
+    <div class="col-lg-6">
+      <div
+        class="product-image bg-white p-5 rounded-2 h-100 d-flex justify-content-center align-items-center"
+      >
+        <img [src]="product.image" alt="product-img" />
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="product-info bg-white p-5 rounded-2 h-100">
+        <h3>{{ product.title }}</h3>
+        <div class="review d-flex gap-2">
+          <ul class="d-flex p-0 mb-3">
+            <li *ngFor="let star of stars(product.rating.rate)">
+              <i class="fa-solid {{ star }}"></i>
+            </li>
+          </ul>
+          ({{ product.rating.count }} review)
+        </div>
+        <h4 class="price mb-3">
+          {{ product.price | currency: "USD" : "symbol" }}
+          <del class="text-muted fs-6">{{
+            product.price | currency: "USD" : "symbol"
+          }}</del>
+        </h4>
+        <p class="mb-5">
+          {{ product.description }}
+        </p>
+        <div class="harry-up text-secondary">
+          <p>Hurry Up! Only 10 Left in Stock!</p>
+          <div
+            class="progress"
+            role="progressbar"
+            aria-label="Basic example"
+            aria-valuenow="25"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          >
+            <div class="progress-bar" style="width: 25%"></div>
+          </div>
+        </div>
+        <div class="availability mt-4 mb-3">
+          <strong>Availability: </strong
+          ><span class="py-1 px-2 text-white rounded-2">In Stock</span>
+        </div>
+        <div class="categories text-capitalize">
+          <strong>categories: </strong>{{ product.category }}
+        </div>
+        <div class="actions d-flex gap-3 mt-4 mb-3">
+          <button
+            type="button"
+            class="btn add-to-cart align-middle flex-grow-1 text-capitalize"
+            (click)="addToCart(product)"
+          >
+            add to cart
+          </button>
+          <div
+            class="whichlist text-center border border-black rounded-2 py-2 px-3"
+          >
+            <i class="fa-regular fa-heart fs-5"></i>
+          </div>
+        </div>
+        <button type="button" class="btn basic-button w-100 text-capitalize">
+          buy it now
+        </button>
+        <hr class="text-secondary" />
+        <div
+          class="purchase-info d-flex gap-2 align-items-center text-secondary"
+        >
+          <i class="fa-solid fa-truck-fast"></i>
+          <p class="m-0">
+            Estimated Delivery: <span class="text-black">May 29 - June 03</span>
+          </p>
+        </div>
+        <div
+          class="purchase-info d-flex gap-2 align-items-center text-secondary"
+        >
+          <i class="fa-solid fa-arrows-spin"></i>
+          <p class="m-0">
+            Return within 90 days of purchase. Taxes are non-refundable.
+          </p>
+        </div>
+        <hr class="text-secondary mt-4 mb-3" />
+        <div class="share d-flex gap-2">
+          <div class="d-flex align-items-center">
+            <i class="fa-solid fa-share-nodes fs-4"></i>
+          </div>
+          <span class="fs-4">Share:</span>
+          <div class="icons">
+            <a class="facebook">
+              <i class="fa-brands fa-facebook-f fs-5"></i>
+            </a>
+            <a class="twitter">
+              <i class="fa-brands fa-x-twitter fs-5"></i>
+            </a>
+            <a class="instagram">
+              <i class="fa-brands fa-instagram fs-5"></i>
+            </a>
+          </div>
+        </div>
+        <hr class="text-secondary mt-3" />
+      </div>
+    </div>
+  </div>
+</div>

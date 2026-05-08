@@ -1,0 +1,65 @@
+.auth-toggle {
+  background-color: #e9edf3;
+  border-radius: 50px;
+  width: 100%;
+  max-width: 700px;
+  margin: auto;
+}
+
+.toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: 500;
+  color: #6c7a92;
+  transition: all 0.3s ease;
+}
+
+/* Active (selected) button */
+.toggle-btn.active {
+  background: #f8f9fb;
+  color: #0F2854;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.sign-up{
+  height: 100vh;
+  font-size: 14px;
+}
+.hero-text p:first-child,
+h5{
+  font-family: "Playfair Display", serif;
+}
+.stats i{
+  font-size: 10px;
+}
+.stats i.fa-percent {
+  font-size: 16px;
+}
+.stats span {
+  font-size: 13px;
+}
+.hero-text p:last-child,
+.stats span {
+  color: var(--light-blue);
+}
+.sign-up .image-part{
+  background-image: url('/images/side1.png');
+  background-size: cover;
+}
+.sign-up .image-part .image{
+  width: 120px;
+  height: 120px;
+}
+.sign-up .image-part .image img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.sign-up .form-part{
+  background-color: #F8FAFF;
+}
+.sign-up .form-part h2{
+  color: var(--primary-dark);
+  font-family: "Playfair Display", serif;
+}

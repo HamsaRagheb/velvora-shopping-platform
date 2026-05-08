@@ -1,0 +1,21 @@
+<app-page-banner title="Wishlist"></app-page-banner>
+
+<div class="container">
+  <div class="wishlist py-5">
+    <h3 class="text-center text-lg-start text-capitalize">
+      Your favourite products
+    </h3>
+    <p class="text-secondary">
+      Discover your favorite products all in one place. Save the items you love,
+      compare your choices, and easily return anytime to complete your purchase.
+      Your wishlist makes shopping simpler, faster, and more enjoyable.
+    </p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3" *ngFor="let product of wishlist">
+        <div>
+          <app-product [product]="product"></app-product>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

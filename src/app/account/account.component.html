@@ -1,0 +1,98 @@
+<div class="account">
+  <div class="row h-100 g-0">
+    <!-- Sidebar -->
+    <div class="col-md-4 col-lg-3">
+      <div class="sidebar h-100 d-flex flex-column justify-content-between">
+        <div class="logo-menu d-flex flex-column gap-5">
+          <div class="logo text-center mx-auto mb-3">
+            <img class="img-fluid" src="images/logo.png" alt="logo-img" />
+          </div>
+
+          <ul class="nav flex-column menu text-center text-md-start mb-5">
+            <!-- Personal info — always visible -->
+            <li class="nav-item" [class.active]="activeSection === 'profile'">
+              <a class="nav-link" (click)="setActiveSection('profile')">
+                <i class="fa-regular fa-user me-2"></i> Personal info
+              </a>
+            </li>
+
+            <!-- Change password — only for logged-in users -->
+            @if (isLoggedIn) {
+              <li
+                class="nav-item"
+                [class.active]="activeSection === 'password'"
+              >
+                <a class="nav-link" (click)="setActiveSection('password')">
+                  <i class="fa-solid fa-lock me-2"></i> Change password
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <!-- Logged-in user name + Sign out -->
+        <div class="d-flex flex-column align-items-center gap-2 mb-3">
+          @if (isLoggedIn && loggedUser) {
+            <div class="text-center px-2 user-name d-none d-md-flex">
+              <i class="fa-regular fa-circle-user me-1"></i>
+              {{ loggedUser.name }}
+            </div>
+          }
+          <div class="signout mx-auto">
+            <a
+              class="nav-link"
+              style="cursor: pointer"
+              (click)="onLogout()"
+              routerLink="/auth/signin"
+            >
+              <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account Content -->
+    <div class="col-md-8 col-lg-9">
+      <div class="d-flex flex-column h-100">
+        <!-- Header -->
+        <div
+          class="content-header d-flex justify-content-between align-items-center"
+        >
+          <h2 class="mb-0">My Account</h2>
+          <button class="continue-btn text-center" routerLink="/products">
+            <i class="fa-solid fa-cart-shopping me-2"></i>
+            Continue Shopping
+          </button>
+        </div>
+
+        <!-- Body -->
+        <div class="content-body h-100 d-flex flex-column">
+          <ng-container [ngSwitch]="activeSection">
+            <app-profile-section
+              class="h-100"
+              *ngSwitchCase="'profile'"
+            ></app-profile-section>
+
+            <!-- Guard: only render if logged in -->
+            <ng-container *ngSwitchCase="'password'">
+              @if (isLoggedIn) {
+                <app-password-section
+                  class="h-100"
+                  (sectionChange)="setActiveSection($event)"
+                ></app-password-section>
+              } @else {
+                <div
+                  class="d-flex flex-column align-items-center justify-content-center h-100 text-muted"
+                >
+                  <i class="fa-solid fa-lock fa-2x mb-3"></i>
+                  <p>You must be signed in to change your password.</p>
+                </div>
+              }
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

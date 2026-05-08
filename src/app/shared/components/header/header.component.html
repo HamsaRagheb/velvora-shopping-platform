@@ -1,0 +1,299 @@
+<header>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container h-100">
+      <div class="d-flex h-100 justify-content-between align-items-center">
+        <p class="m-0 top-bar-text d-none d-md-block">
+          Discover Fashion, Accessories &amp; Electronics in One Place
+        </p>
+        <p class="m-0 top-bar-text d-block d-md-none">
+          <i class="fa-solid fa-tag me-1"></i> Free shipping on orders $50+
+        </p>
+        <div class="language-country d-flex gap-2 gap-md-3">
+          <!-- Language Dropdown -->
+          <div class="lang-dropdown dropdown d-flex align-items-center">
+            <button
+              class="btn text-white d-flex align-items-center gap-2 dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+            >
+              <img
+                [src]="'https://flagcdn.com/w20/' + selectedLang.flag + '.png'"
+                width="20"
+                alt=""
+              />
+              <span class="d-none d-sm-inline">{{ selectedLang.name }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li *ngFor="let lang of languages">
+                <button
+                  class="dropdown-item d-flex align-items-center gap-2"
+                  (click)="selectLang(lang)"
+                >
+                  <img
+                    [src]="'https://flagcdn.com/w20/' + lang.flag + '.png'"
+                    width="20"
+                    alt=""
+                  />
+                  {{ lang.name }}
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Country Dropdown -->
+          <div class="country-dropdown dropdown">
+            <button
+              type="button"
+              class="btn text-white dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              <span class="d-none d-sm-inline"
+                >{{ selectedCountry.name }} ({{
+                  selectedCountry.currency
+                }})</span
+              >
+              <span class="d-inline d-sm-none">{{
+                selectedCountry.currency
+              }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li *ngFor="let country of countries">
+                <button class="dropdown-item" (click)="selectCountry(country)">
+                  {{ country.name }} ({{ country.currency }})
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Bar -->
+  <div class="main-bar pt-2 pb-2 no-custom-style">
+    <div class="container">
+      <div
+        class="main-bar-inner d-flex justify-content-between align-items-center gap-3"
+      >
+        <!-- Logo -->
+        <div class="logo d-flex align-items-center flex-shrink-0">
+          <a routerLink="/products">
+            <img
+              class="img-fluid logo-img"
+              src="images/logo.png"
+              alt="logo-img"
+            />
+          </a>
+        </div>
+
+        <!-- Search Area — hidden on mobile, shown inline on md+ -->
+        <div
+          class="search-area d-none d-md-flex align-items-center gap-3 position-relative w-50"
+        >
+          <input
+            type="text"
+            class="form-control flex-grow-1 border-0 ps-3"
+            placeholder="Search for products..."
+            [(ngModel)]="searchQuery"
+            (keyup)="onSearchKeyUp($event)"
+          />
+          <button
+            class="search-btn btn me-0 pe-0 px-lg-4 h-100 border-0"
+            (click)="navigateToSearchPage()"
+          >
+            <i class="fa-solid fa-magnifying-glass d-inline d-lg-none"></i>
+            <span class="d-none d-lg-inline">Search</span>
+          </button>
+
+          <!-- Search Dropdown -->
+          <div
+            class="search-dropdown position-absolute bg-white shadow rounded-3 w-100"
+            *ngIf="showDropdown"
+          >
+            <ng-container *ngIf="searchResults.length > 0; else noResults">
+              <div
+                class="search-item d-flex align-items-center gap-3 p-2"
+                *ngFor="let product of searchResults"
+                [routerLink]="['/details', product.id]"
+                (click)="onProductSelect()"
+              >
+                <img [src]="product.image" alt="product-img" />
+                <div class="product-info">
+                  <p class="m-0 fw-semibold">{{ product.title }}</p>
+                  <span class="price">
+                    {{ product.price | currency: "USD" : "symbol" : "1.2-2" }}
+                  </span>
+                  <span
+                    *ngIf="product.rating.rate"
+                    class="text-decoration-line-through text-muted ms-2"
+                  >
+                    {{ product.price | currency: "USD" : "symbol" : "1.2-2" }}
+                  </span>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #noResults>
+              <div
+                class="p-3 text-muted text-center"
+                *ngIf="searchQuery.trim()"
+              >
+                No products found for "{{ searchQuery }}"
+              </div>
+            </ng-template>
+          </div>
+
+          <!-- Backdrop -->
+          <div class="search-backdrop" *ngIf="showDropdown"></div>
+        </div>
+
+        <!-- Header Icons -->
+        <div
+          class="header-icon d-flex gap-2 gap-sm-3 gap-lg-4 align-items-center flex-shrink-0"
+        >
+          <!-- Mobile Search Toggle -->
+          <button
+            class="mobile-search-toggle btn border-0 bg-transparent d-flex d-md-none align-items-center justify-content-between p-0"
+            (click)="toggleMobileSearch()"
+            aria-label="Toggle search"
+          >
+            <i class="fa-solid fa-magnifying-glass fs-6"></i>
+          </button>
+
+          <!-- Account -->
+          <a routerLink="/account" class="d-flex gap-2 align-items-center">
+            <div class="icon"><i class="fa-regular fa-user"></i></div>
+            <div class="text d-none d-lg-flex flex-column">
+              <span class="text-label">Account</span>
+            </div>
+          </a>
+
+          <!-- Wishlist -->
+          <a routerLink="/wishlist" class="d-flex gap-2 align-items-center">
+            <div class="icon position-relative">
+              <i class="fa-regular fa-heart"></i>
+              <span class="counter position-absolute">{{
+                wishlistItemsNumber
+              }}</span>
+            </div>
+          </a>
+
+          <!-- Cart -->
+          <a routerLink="/cart" class="d-flex gap-2 align-items-center">
+            <div class="icon position-relative">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="counter position-absolute">{{
+                cartItemsNumber
+              }}</span>
+            </div>
+            <div class="text d-none d-lg-flex flex-column">
+              <span class="text-label">Your Cart</span>
+              <span class="cart-total">{{
+                0 | currency: "USD" : "symbol"
+              }}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Search Bar (slides down when toggled) -->
+      <div class="mobile-search-bar d-md-none" [class.open]="mobileSearchOpen">
+        <div
+          class="search-area d-flex align-items-center gap-2 position-relative my-2"
+        >
+          <input
+            type="text"
+            class="form-control flex-grow-1 border-0 ps-3"
+            placeholder="Search for products..."
+            [(ngModel)]="searchQuery"
+            (keyup)="onSearchKeyUp($event)"
+          />
+          <button
+            aria-label="search"
+            class="search-btn btn h-100 border-0 d-flex justify-content-center align-items-center"
+            (click)="navigateToSearchPage()"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <!-- Mobile Search Dropdown -->
+          <div
+            class="search-dropdown position-absolute bg-white shadow rounded-3 w-100"
+            *ngIf="showDropdown"
+          >
+            <ng-container
+              *ngIf="searchResults.length > 0; else noResultsMobile"
+            >
+              <div
+                class="search-item d-flex align-items-center gap-3 p-2"
+                *ngFor="let product of searchResults"
+                [routerLink]="['/details', product.id]"
+                (click)="onProductSelect()"
+              >
+                <img [src]="product.image" alt="product-img" />
+                <div class="product-info">
+                  <p class="m-0 fw-semibold">{{ product.title }}</p>
+                  <span class="price">
+                    {{ product.price | currency: "USD" : "symbol" : "1.2-2" }}
+                  </span>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #noResultsMobile>
+              <div
+                class="p-3 text-muted text-center"
+                *ngIf="searchQuery.trim()"
+              >
+                No products found for "{{ searchQuery }}"
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Nav Bar -->
+<nav class="d-flex align-items-center shadow-lg">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center h-100">
+      <!-- Categories Button -->
+      <div>
+        <button
+          class="categories bg-transparent border-0"
+          (click)="openCategories()"
+        >
+          <i class="fa-solid fa-bars me-1 me-sm-2"></i>
+          <span class="d-none d-sm-inline">Browse All Categories</span>
+          <span class="d-inline d-sm-none">Categories</span>
+        </button>
+      </div>
+
+      <!-- Nav Links -->
+      <ul class="d-flex align-items-center gap-2 gap-sm-3 gap-md-4 m-0">
+        <li>
+          <a routerLink="/products" routerLinkActive="active">Products</a>
+        </li>
+        <li>
+          <a routerLink="/cart" routerLinkActive="active">Cart</a>
+        </li>
+        <li>
+          <a routerLink="/wishlist" routerLinkActive="active">Wishlist</a>
+        </li>
+      </ul>
+
+      <!-- Promo Text -->
+      <div class="promo-text d-none d-lg-block">
+        <i class="fa-solid fa-percent me-1"></i> Sale $20 Off Your First Order.
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Categories Panel -->
+<app-categories
+  [categories]="categories"
+  [isOpen]="openMiniCategories"
+  (closePanel)="openMiniCategories = false"
+></app-categories>

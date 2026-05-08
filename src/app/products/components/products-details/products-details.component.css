@@ -1,0 +1,55 @@
+.product-details .product-image img {
+  width: 80%;
+  height: 100%;
+  object-fit: contain;
+}
+.product-info .harry-up .progress{
+  height: 6px;
+}
+.product-info .harry-up .progress-bar {
+  background-color: var(--primary-dark);
+}
+.product-info .availability span{
+  background-color: var(--primary-dark);
+}
+.product-info .share .icons a {
+  display: inline-block;
+  padding: 7px;
+  margin-right: 10px;
+  border: 1px solid var(--primary-dark);
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  color: var(--primary-dark);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+/* Facebook */
+.share .icons a.facebook:hover {
+  background-color: #1877F2;
+  border-color: #1877F2;
+  color: #fff;
+}
+
+/* Twitter (X) */
+.share .icons a.twitter:hover {
+  background-color: #000;
+  border-color: #000;
+  color: #fff;
+}
+
+/* Instagram (gradient) */
+.share .icons a.instagram:hover {
+  background: linear-gradient(45deg,
+      #feda75,
+      #fa7e1e,
+      #d62976,
+      #962fbf,
+      #4f5bd5);
+  border: none;
+  color: #fff;
+}
+
+

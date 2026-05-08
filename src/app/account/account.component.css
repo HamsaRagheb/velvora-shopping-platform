@@ -1,0 +1,91 @@
+/* Layout */
+.account {
+  height: 100vh;
+}
+/* Sidebar */
+.sidebar {
+  background-color: #1C4D8D;
+  color: white;
+  padding: 30px 20px;
+  background-image: url('/images/side1.png');
+  background-size: cover;
+}
+/* Logo */
+.sidebar .logo {
+  width: 120px;
+  height: 120px;
+}
+
+.sidebar .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* Menu */
+.menu .nav-link {
+  color: #cbd5e1;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.menu .nav-link:hover {
+  background: #4978a3;
+  color: white;
+}
+
+.menu li.active .nav-link {
+  background: #4978a3;
+  color: white;
+}
+.user-name{
+    color: #cbd5e1;
+}
+.signout {
+  width: 100%;
+}
+.signout .nav-link {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  border-radius: 12px;
+  color: #cbd5e1;
+  transition: 0.3s ease;
+}
+.signout .nav-link:hover {
+  background: rgba(255, 0, 0, 0.1);
+  color: #ff6b6b;
+}
+.signout .nav-link:hover i {
+  color: #ff6b6b;
+}
+/******************************************************************/
+/* Account Content */
+/* Header */
+.content-header {
+  background: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+
+}
+.content-header h2 {
+  margin: 0;
+  color: #0F2854;
+  font-family: "Playfair Display", serif;
+}
+@media (max-width: 576px) {
+  .content-header {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  .content-header button {
+      order: -1 !important;
+  }
+}

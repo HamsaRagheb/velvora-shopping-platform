@@ -1,0 +1,37 @@
+.to-top-wrapper{
+    width: 45px;
+    height: 45px;
+    background-color: var(--light-blue);
+    z-index: 2000;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    animation: go-up 0.5s infinite alternate linear forwards;
+    -webkit-animation: go-up 0.5s infinite alternate ease-in-out;
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    -ms-transition: background-color 0.3s;
+    -o-transition: background-color 0.3s;
+}
+.to-top-wrapper:hover {
+  background-color: var(--dark-blue);
+}
+@keyframes go-up {
+  0%{
+    transform: translateY(0px);
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+}
+
+100%{
+  transform: translateY(-10px);
+  -webkit-transform: translateY(-10px);
+  -moz-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  -o-transform: translateY(-10px);
+}
+}

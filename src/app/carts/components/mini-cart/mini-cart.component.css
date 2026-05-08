@@ -1,0 +1,94 @@
+.mini-cart{
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 10002;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  -webkit-transition: transform 0.4s ease-in-out;
+  -moz-transition: transform 0.4s ease-in-out;
+  -ms-transition: transform 0.4s ease-in-out;
+  -o-transition: transform 0.4s ease-in-out;
+}
+.mini-cart.open {
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+.mini-cart .cartItems{
+  flex: 1;
+  overflow-y: auto;
+}
+.mini-cart .title{
+  background-color: var(--primary-dark);
+  color: white;
+}
+.mini-cart .title button:focus{
+  outline: none;
+}
+.mini-cart .cartItem{
+  border-bottom: 1px solid #e0e0e0;
+}
+.mini-cart .cartItem .item .image{
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.mini-cart .cartItem .item .image img{
+  width: 100%;
+  height: 100%;
+}
+.mini-cart .cartItem .details{
+  flex: 1;
+}
+.mini-cart .cartItem .details button:focus{
+  outline: none;
+}
+.mini-cart .cartItem .deleteIcon button{
+  color: red;
+  cursor: pointer;
+}
+.mini-cart .cartItem .details .quantity {
+  border: 1px solid ;
+  border-radius: 8px;
+  height: 40px;
+  width: 120px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+.mini-cart .cartItem .details .name{
+  color: var(--primary-dark);
+
+}
+.mini-cart .cart-summary {
+  background-color: #F0F4F9;
+}
+.mini-cart .cart-summary a.view-cart button {
+  background-color: var(--light-blue);
+}
+
+.mini-cart .cart-summary a.check-out button{
+  background-color: var(--primary-dark);
+}
+.mini-cart .cart-summary a.view-cart button:hover,
+.mini-cart .cart-summary a.check-out button:hover {
+  background-color: var(--dark-blue);
+}

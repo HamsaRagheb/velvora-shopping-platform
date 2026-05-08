@@ -1,0 +1,47 @@
+.mini-wishlist{
+  width: 400px;
+  z-index: 10002;
+  height: 100vh;
+  transition:transform 0.7s;
+  -webkit-transition:transform 0.7s;
+  -moz-transition:transform 0.7s;
+  -ms-transition:transform 0.7s;
+  -o-transition:transform 0.7s;
+  transform: translateX(100%);
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+}
+.mini-wishlist.open{
+  transform: translateX(0);
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+}
+.mini-wishlist .title{
+  background-color: var(--primary-dark);
+  color: white;
+  height: 60px;
+}
+.mini-wishlist .items .item .image{
+  width: 80px;
+  height: 80px;
+}
+.mini-wishlist .items .item .image img{
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+.mini-wishlist .navigate-to-wishlist {
+  background-color: #F0F4F9;
+}
+
+.mini-wishlist .navigate-to-wishlist a.wishlist-btn button {
+  background-color: var(--primary-dark);
+}
+
+.mini-wishlist .navigate-to-wishlist a.wishlist-btn button:hover {
+  background-color: var(--dark-blue);
+}
