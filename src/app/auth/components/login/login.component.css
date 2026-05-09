@@ -89,9 +89,9 @@ h5 {
   text-decoration: underline;
 }
 
-/* NEW: Sign Up prompt */
+/*Sign Up prompt */
 .signup-prompt {
-  font-size: 13px;
+  font-size: 15px;
   color: #6c7a92;
 }
 

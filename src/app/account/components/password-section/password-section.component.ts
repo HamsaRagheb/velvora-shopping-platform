@@ -46,6 +46,6 @@ export class PasswordSectionComponent {
     });
   }
   onForgotPassword(): void {
-    this.route.navigate(['/auth/forget-password']);
+    this.route.navigate(['/auth/forgot-password']);
   }
 }

@@ -127,8 +127,10 @@ export class ResetCodeSectionComponent implements OnInit {
       .subscribe({
         next: () => {
           this.isResetting = false;
-          // Clean up sessionStorage after successful reset
           sessionStorage.removeItem('resetEmail');
+
+          this.authService.logout(); //clears the new token the API just saved
+
           this.sweetAlert
             .success(
               'Password Reset!',

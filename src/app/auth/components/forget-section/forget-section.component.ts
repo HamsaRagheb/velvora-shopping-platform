@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SweetAlertService } from '../../../services/sweet-alert.service';
 import { Router, RouterModule } from '@angular/router';
@@ -14,9 +14,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './forget-section.component.css',
 })
 export class ForgetSectionComponent {
-  // Emits the verified email up to AccountComponent on success
-  @Output() codeSent = new EventEmitter<string>();
-
   email: string = '';
   isLoading: boolean = false;
 
@@ -33,13 +30,12 @@ export class ForgetSectionComponent {
       next: (res) => {
         this.isLoading = false;
         if (res.statusMsg === 'success') {
-          this.sweetAlert.success('Code Sent!', res.message).then(() => {
-            // Save email to sessionStorage so ResetCodeSectionComponent can read it
-            sessionStorage.setItem('resetEmail', this.email);
+          // Save to sessionStorage FIRST before anything else
+          sessionStorage.setItem('resetEmail', this.email);
 
-            // Hand the email up — AccountComponent will save it and switch to 'code' tab
-            this.codeSent.emit(this.email);
-            this.router.navigate(['/auth/account/reset-password']);
+          // Show alert then navigate
+          this.sweetAlert.success('Code Sent!', res.message).then(() => {
+            this.router.navigate(['/auth/reset-password']);
           });
         }
       },

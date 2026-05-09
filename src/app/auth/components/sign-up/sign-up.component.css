@@ -44,7 +44,7 @@ h5{
   color: var(--light-blue);
 }
 .sign-up .image-part{
-  background-image: url('/assets/images/side1.png');
+  background-image: url('../../../../assets/images/side1.png');
   background-size: cover;
 }
 .sign-up .image-part .image{
@@ -62,4 +62,21 @@ h5{
 .sign-up .form-part h2{
   color: var(--primary-dark);
   font-family: "Playfair Display", serif;
+}
+/*Sign Up prompt */
+.login-prompt {
+  font-size: 15px;
+  color: #6c7a92;
+}
+
+.login-link {
+  color: #0F2854;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #1C4D8D;
+  text-decoration: underline;
 }

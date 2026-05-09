@@ -37,7 +37,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'auth/forget-password',
+    path: 'auth/forgot-password', // ← also fix typo: was 'forget-password'
     loadComponent: () =>
       import('./auth/components/forget-section/forget-section.component').then(
         (m) => m.ForgetSectionComponent,
