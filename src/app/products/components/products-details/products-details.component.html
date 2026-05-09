@@ -56,7 +56,12 @@
             add to cart
           </button>
           <div
-            class="whichlist text-center border border-black rounded-2 py-2 px-3"
+            class="whichlist text-center border rounded-2 py-2 px-3"
+            [class.border-danger]="isWishlisted"
+            [class.border-black]="!isWishlisted"
+            [class.text-danger]="isWishlisted"
+            (click)="toggleWishlist()"
+            style="cursor: pointer"
           >
             <i class="fa-regular fa-heart fs-5"></i>
           </div>

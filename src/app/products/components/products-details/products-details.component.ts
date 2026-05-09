@@ -4,6 +4,7 @@ import { CartService } from '../../../carts/services/cart.service';
 import { Product } from '../../../models/product';
 import { ActivatedRoute } from '@angular/router';
 import { SweetAlertService } from '../../../services/sweet-alert.service';
+import { WishlistService } from '../../../wishlist/services/wishlist.service';
 
 @Component({
   selector: 'app-products-details',
@@ -16,6 +17,7 @@ export class ProductsDetailsComponent {
   constructor(
     private productService: ProductsService,
     private cartService: CartService,
+    private wishlistService: WishlistService,
     private activatedRoute: ActivatedRoute,
     private sweetAlertService: SweetAlertService,
   ) {}
@@ -36,7 +38,17 @@ export class ProductsDetailsComponent {
       });
     }
   }
+  get isWishlisted(): boolean {
+    return this.product
+      ? this.wishlistService.isInWishlist(this.product.id)
+      : false;
+  }
 
+  toggleWishlist(): void {
+    if (this.product) {
+      this.wishlistService.toggle(this.product);
+    }
+  }
   stars(rate: number) {
     return this.productService.getStars(rate);
   }
