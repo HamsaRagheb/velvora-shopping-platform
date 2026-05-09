@@ -51,7 +51,7 @@ h5 {
 }
 
 .sign-in .image-part {
-  background-image: url('/images/side1.png');
+  /* background-image: url('assets/images/side1.png'); */
   background-size: cover;
 }
 
@@ -75,7 +75,7 @@ h5 {
   font-family: "Playfair Display", serif;
 }
 
-/* ✅ NEW: Forgot Password link */
+/* NEW: Forgot Password link */
 .forgot-link {
   color: #0F2854;
   font-size: 13px;
@@ -89,7 +89,7 @@ h5 {
   text-decoration: underline;
 }
 
-/* ✅ NEW: Sign Up prompt */
+/* NEW: Sign Up prompt */
 .signup-prompt {
   font-size: 13px;
   color: #6c7a92;

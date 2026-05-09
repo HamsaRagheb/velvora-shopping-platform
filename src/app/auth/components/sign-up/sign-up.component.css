@@ -44,7 +44,7 @@ h5{
   color: var(--light-blue);
 }
 .sign-up .image-part{
-  background-image: url('/images/side1.png');
+  /* background-image: url('assets/images/side1.png'); */
   background-size: cover;
 }
 .sign-up .image-part .image{

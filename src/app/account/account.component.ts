@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
+import { environment } from '../../environments/environment.development';
 
 type Section = 'profile' | 'password';
 
@@ -10,6 +11,7 @@ type Section = 'profile' | 'password';
   styleUrl: './account.component.css',
 })
 export class AccountComponent {
+  imgBase = environment.imgBase;
   activeSection: Section = 'profile';
 
   constructor(private authService: AuthService) {}

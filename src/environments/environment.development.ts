@@ -1,3 +1,5 @@
 export const environment = {
-  baseUrl: 'https://fakestoreapi.com'
+  baseUrl: 'https://fakestoreapi.com',
+  production: false,
+  imgBase: '',
 };
