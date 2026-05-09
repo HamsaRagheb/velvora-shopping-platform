@@ -2,10 +2,7 @@
   <div class="row h-100 g-0">
     <!-- Sidebar -->
     <div class="col-md-4 col-lg-3">
-      <div
-        class="sidebar h-100 d-flex flex-column justify-content-between"
-        [style.background-image]="'url(' + imgBase + '/images/side1.png)'"
-      >
+      <div class="sidebar h-100 d-flex flex-column justify-content-between">
         <div class="logo-menu d-flex flex-column gap-5">
           <div class="logo text-center mx-auto mb-3">
             <img
@@ -40,7 +37,9 @@
         <!-- Logged-in user name + Sign out -->
         <div class="d-flex flex-column align-items-center gap-2 mb-3">
           @if (isLoggedIn && loggedUser) {
-            <div class="text-center px-2 user-name d-none d-md-flex">
+            <div
+              class="text-center px-2 user-name d-none d-md-flex align-items-center"
+            >
               <i class="fa-regular fa-circle-user me-1"></i>
               {{ loggedUser.name }}
             </div>
