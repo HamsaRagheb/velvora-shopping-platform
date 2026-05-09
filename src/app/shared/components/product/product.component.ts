@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ProductsService } from '../../../products/services/products.service';
 import { WishlistService } from '../../../wishlist/services/wishlist.service';
+import { CartService } from '../../../carts/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -16,9 +17,13 @@ export class ProductComponent {
   constructor(
     private productService: ProductsService,
     private wishlistService: WishlistService,
+    private cartService: CartService,
   ) {}
   ngOnInit() {}
+
   addToCart() {
+    this.cartService.addToCart(this.product);
+    this.cartService.openCart();
     this.addToCartEvent.emit(this.product);
   }
   stars(rate: number) {

@@ -5,6 +5,7 @@
   background-color: rgba(0, 0, 0, 0);
   z-index: 1040;
   pointer-events: none;
+  cursor: url('../../../../assets/images/xmark-solid.png') 13 13, auto;
   transition: background-color 0.3s ease;
 }
 
