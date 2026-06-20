@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ecommerce-app": {
+    "velvora": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ecommerce-app",
+            "outputPath": "dist/velvora",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -91,10 +91,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ecommerce-app:build:production"
+              "buildTarget": "velvora:build:production"
             },
             "development": {
-              "buildTarget": "ecommerce-app:build:development"
+              "buildTarget": "velvora:build:development"
             }
           },
           "defaultConfiguration": "development"
