@@ -4,6 +4,8 @@ A modern and scalable E-Commerce web application built with Angular.
 
 Velvora delivers a smooth online shopping experience with modern frontend architecture, responsive UI design, authentication system, route protection, lazy loading, SSR support, and reusable Angular modules.
 
+🔗 **Live Demo:** [Velvora](https://hamsaragheb.github.io/velvora-shopping-platform/products)
+
 ---
 
 # Preview
