@@ -58,7 +58,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/velvora-shopping-platform/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
