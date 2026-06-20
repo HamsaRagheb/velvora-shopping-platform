@@ -10,12 +10,26 @@
       compare your choices, and easily return anytime to complete your purchase.
       Your wishlist makes shopping simpler, faster, and more enjoyable.
     </p>
-    <div class="row g-4">
+
+    <div class="row g-4" *ngIf="wishlist.length > 0; else emptyWishlist">
       <div class="col-md-6 col-lg-3" *ngFor="let product of wishlist">
         <div>
           <app-product [product]="product"></app-product>
         </div>
       </div>
     </div>
+
+    <ng-template #emptyWishlist>
+      <div class="empty-wishlist text-center">
+        <i class="fa-solid fa-heart empty-wishlist__icon"></i>
+        <p class="empty-wishlist__title">Your wishlist is empty</p>
+        <p class="empty-wishlist__text">
+          Items you save will show up here so you can find them again easily.
+        </p>
+        <button (click)="toProducts()" class="btn btn-primary mt-4">
+          Continue Shopping
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>

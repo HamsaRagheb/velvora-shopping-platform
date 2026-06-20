@@ -1,3 +1,38 @@
-h3{
+h3 {
   color: var(--primary-dark);
+}
+
+/* ===== EMPTY WISHLIST ===== */
+.empty-wishlist {
+  background: #fff;
+  border: 1px solid #ECEEF2;
+  border-radius: 12px;
+  padding: 64px 24px;
+}
+
+.empty-wishlist__icon {
+  font-size: 36px;
+  color: #C7CCD6;
+  margin-bottom: 16px;
+}
+
+.empty-wishlist__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-dark);
+  margin: 0 0 8px;
+}
+
+.empty-wishlist__text {
+  font-size: 14px;
+  color: #94A0B3;
+  margin: 0;
+}
+
+.btn-primary{
+  background-color: var(--primary-dark) !important;
+  border: var(--primary-dark) !important;
+}
+.btn-primary:hover {
+  background-color: var(--dark-blue) !important;
 }

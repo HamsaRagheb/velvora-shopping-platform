@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../../models/product';
 import { WishlistService } from '../../services/wishlist.service';
 import { SweetAlertService } from '../../../services/sweet-alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
@@ -13,7 +14,7 @@ export class WishlistComponent {
   wishlist: Product[] = [];
   constructor(
     private wishlistService: WishlistService,
-    private sweetAlert: SweetAlertService,
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -25,5 +26,8 @@ export class WishlistComponent {
         console.log(error);
       },
     });
+  }
+  toProducts() {
+    this.router.navigate(['/products']);
   }
 }
