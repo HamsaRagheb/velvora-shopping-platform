@@ -86,9 +86,4 @@ export class AllProductsComponent {
       this.getProductsByCategory(category);
     }
   }
-
-  onAddToCart(product: Product) {
-    this.cartService.addToCart(product);
-    this.cartService.openCart();
-  }
 }

@@ -19,16 +19,16 @@ export class SearchComponent {
   ) {}
 
   ngOnInit() {
+    this.productsService.getFilteredProducts().subscribe((results) => {
+      this.searchResults = results;
+    });
+
     this.route.queryParams.subscribe((params) => {
       const query = params['query'];
-      this.searchQuery = query;
+      this.searchQuery = query ?? '';
       if (query) {
         this.productsService.updateSearch(query);
       }
-
-      this.productsService.getFilteredProducts().subscribe((results) => {
-        this.searchResults = results;
-      });
     });
   }
 }

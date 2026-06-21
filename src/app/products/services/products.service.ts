@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {
   BehaviorSubject,
+  combineLatest,
   debounceTime,
   distinctUntilChanged,
   Observable,
@@ -17,8 +18,13 @@ export class ProductsService {
   private products: Product[] = [];
   private searchSubject = new BehaviorSubject<string>('');
   search$ = this.searchSubject.asObservable();
+  private productsSubject = new BehaviorSubject<Product[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.http
+      .get<Product[]>(`${environment.baseUrl}/products`)
+      .subscribe((products) => this.productsSubject.next(products));
+  }
 
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.baseUrl}/products`);
@@ -32,22 +38,16 @@ export class ProductsService {
     this.searchSubject.next(query);
   }
   getFilteredProducts(): Observable<Product[]> {
-    return this.search$.pipe(
+    return combineLatest([this.search$, this.productsSubject]).pipe(
       debounceTime(300),
-      distinctUntilChanged(),
-      map((query) => {
+      map(([query, products]) => {
         if (query.trim() === '') return [];
-
         const lowerQuery = query.toLowerCase();
-
-        return this.products
-          .filter((product) => {
-            return (
-              product.title.toLowerCase().includes(lowerQuery) ||
-              product.category.toLowerCase().includes(lowerQuery)
-            );
-          })
-          .slice(0, 4);
+        return products.filter(
+          (p) =>
+            p.title.toLowerCase().includes(lowerQuery) ||
+            p.category.toLowerCase().includes(lowerQuery),
+        );
       }),
     );
   }
